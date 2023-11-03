@@ -35,7 +35,7 @@ class TodoScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                   child: TextField(
+                      child: TextField(
                     controller: titleController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -92,8 +92,33 @@ class TodoScreen extends StatelessWidget {
                   );
                 },
               )),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
-              // Container(
+//   trailing: Row(children: [
+//   IconButton(
+//     icon: Icon(Icons.delete),
+//     onPressed: () {
+//       print(index);
+//       todoProvider.removeTodoValue(index);
+//     },
+//   ),
+//   IconButton(
+//     icon: Icon(Icons.edit),
+//     onPressed: () {
+//       print(index);
+//       todoProvider.removeTodoValue(index);
+//     },
+//   ),
+// ]),
+
+
+    // Container(
               //   decoration: BoxDecoration(
               //     border: Border.all(
               //       style: BorderStyle.solid,
@@ -140,27 +165,3 @@ class TodoScreen extends StatelessWidget {
               //     ],
               //   ),
               // ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//   trailing: Row(children: [
-//   IconButton(
-//     icon: Icon(Icons.delete),
-//     onPressed: () {
-//       print(index);
-//       todoProvider.removeTodoValue(index);
-//     },
-//   ),
-//   IconButton(
-//     icon: Icon(Icons.edit),
-//     onPressed: () {
-//       print(index);
-//       todoProvider.removeTodoValue(index);
-//     },
-//   ),
-// ]),

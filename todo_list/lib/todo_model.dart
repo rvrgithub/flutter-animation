@@ -8,7 +8,7 @@ class TodoModel with ChangeNotifier {
   int _counter = 0;
   // int get counter => _counter;
   getTodoValue(String title) {
-    _todo.add(Todo(id: _counter, title: title));
+    _todo.add(Todo(id: _counter++, title: title));
     notifyListeners();
   }
 
@@ -23,9 +23,7 @@ class TodoModel with ChangeNotifier {
   }
   updateTodo(int id, String newTitle){
      final todo = _todo.firstWhere((todo) => todo.id == id);
-   
       todo.title = newTitle;
       notifyListeners();
-    
   }
 }
