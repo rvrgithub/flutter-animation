@@ -16,4 +16,16 @@ class TodoModel with ChangeNotifier {
     _todo.removeAt(index);
     notifyListeners();
   }
+  var editIndex = null;
+  updateEditIndex(index){
+    editIndex = index;
+    notifyListeners();
+  }
+  updateTodo(int id, String newTitle){
+     final todo = _todo.firstWhere((todo) => todo.id == id);
+   
+      todo.title = newTitle;
+      notifyListeners();
+    
+  }
 }

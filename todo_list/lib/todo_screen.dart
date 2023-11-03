@@ -35,7 +35,7 @@ class TodoScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                      child: TextField(
+                   child: TextField(
                     controller: titleController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -61,18 +61,27 @@ class TodoScreen extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-
               Expanded(
                   child: ListView.builder(
                 itemCount: todoProvider.todo.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(todoProvider.todo[index].title),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () {
-                        print(index);
-                        todoProvider.removeTodoValue(index);
+                    title: todoProvider.todo[index].id == todoProvider.editIndex
+                        ? TextFormField(
+                            controller: TextEditingController(
+                                text: todoProvider.todo[index].title),
+                            onFieldSubmitted: (value) {
+                              todoProvider.updateTodo(
+                                  todoProvider.todo[index].id, value);
+                              todoProvider.updateEditIndex(null);
+                            },
+                          )
+                        : Text(todoProvider.todo[index].title),
+                    trailing: InkWell(
+                      child: Icon(Icons.edit),
+                      onTap: () {
+                        todoProvider
+                            .updateEditIndex(todoProvider.todo[index].id);
                       },
                     ),
                     leading: Checkbox(
@@ -138,3 +147,20 @@ class TodoScreen extends StatelessWidget {
     );
   }
 }
+
+//   trailing: Row(children: [
+//   IconButton(
+//     icon: Icon(Icons.delete),
+//     onPressed: () {
+//       print(index);
+//       todoProvider.removeTodoValue(index);
+//     },
+//   ),
+//   IconButton(
+//     icon: Icon(Icons.edit),
+//     onPressed: () {
+//       print(index);
+//       todoProvider.removeTodoValue(index);
+//     },
+//   ),
+// ]),
